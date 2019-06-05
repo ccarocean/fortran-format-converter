@@ -30,10 +30,10 @@ coverage: check
 
 check:
 	@mypy $(module)
-	# @mypy --config-file tests/mypy.ini tests
-	@flake8 $(module) # tests
+	@mypy --config-file tests/mypy.ini tests
+	@flake8 $(module) tests
 	@python -m pylint $(module)
-	@python -m pycodestyle $(module) # tests
+	@python -m pycodestyle $(module) tests
 	@python -m pydocstyle $(module)
 
 apidoc: export SPHINX_APIDOC_OPTIONS=members,no-undoc-members,show-inheritance,private-members,special-members

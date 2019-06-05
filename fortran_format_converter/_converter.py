@@ -15,7 +15,7 @@ _MATCH_FORMAT = re.compile(
     r'(EN)(\d+)\.(\d+)(?:[ED](\d+))?$|'    # engineering
     r'(ES)(\d+)\.(\d+)(?:[ED](\d+))?$|'    # scientific
     r'(L)(\d+)$|'                          # logical
-    r'(A)(\d+)$|'                          # character
+    r'(A)(\d+)?$|'                         # character
     r'(G)(\d+)\.(\d+)(?:[ED](\d+))?$'      # generalized
     r')'
 )
@@ -84,9 +84,9 @@ class Format:
     def string(self) -> str:
         """Best effort approximating Python format string."""
         align = self.align if self.align != '>' else ''
-        sign = self.align if self.sign != '-' else ''
-        width = self.width if self.width else ''
-        precision = f'.{self.precision}' if self.precision else ''
+        sign = self.sign if self.sign != '-' else ''
+        width = self.width if self.width is not None else ''
+        precision = f'.{self.precision}' if self.precision is not None else ''
         return f'{self.fill}{align}{sign}{width}{precision}{self.type}'
 
     @cached_property
@@ -137,7 +137,9 @@ class Format:
             if self._uppercase:
                 return switch[self._type]
             return switch[self._type].lower()
-        except KeyError:
+        except KeyError:  # pragma: no cover
+            # this can't realy be reached due to the structure of the
+            # _MATCH_FORMAT regular expression
             raise self._format_error()
 
     @property
