@@ -21,5 +21,5 @@ v0.1.0 - 2019-06-06
 * Added :code:`convert` function to convert Fortran format specification
   strings into Python format strings.
 
-.. _Unreleased: https://github.com/mrshannon/dataclass-builder/compare/v0.1.1...HEAD
-.. _v0.1.1: https://github.com/mrshannon/dataclass-builder/compare/v0.1.0...v0.1.1
+.. _Unreleased: https://github.com/ccarocean/fortran-format-converter/compare/v0.1.1...HEAD
+.. _v0.1.1: https://github.com/ccarocean/fortran-format-converter/compare/v0.1.0...v0.1.1
