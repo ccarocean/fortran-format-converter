@@ -4,11 +4,11 @@ from fortran_format_converter import convert
 
 def test_integer_format():
     for w in range(1, 81):
-        assert convert(f'I{w}') == f'{w}d'
+        assert convert('I{}'.format(w)) == '{}d'.format(w)
     for d in range(1, 20):
-        assert convert(f'I20.{d}') == '20d'
+        assert convert('I20.{}'.format(d)) == '20d'
     for d in range(20, 41):
-        assert convert(f'I20.{d}') == '020d'
+        assert convert('I20.{}'.format(d)) == '020d'
     with pytest.raises(ValueError):
         convert('I')
     with pytest.raises(ValueError):
@@ -17,11 +17,11 @@ def test_integer_format():
 
 def test_integer_format_uppercase():
     for w in range(1, 81):
-        assert convert(f'I{w}', uppercase=True) == f'{w}d'
+        assert convert('I{}'.format(w), uppercase=True) == '{}d'.format(w)
     for d in range(1, 20):
-        assert convert(f'I20.{d}', uppercase=True) == '20d'
+        assert convert('I20.{}'.format(d), uppercase=True) == '20d'
     for d in range(20, 41):
-        assert convert(f'I20.{d}', uppercase=True) == '020d'
+        assert convert('I20.{}'.format(d), uppercase=True) == '020d'
     with pytest.raises(ValueError):
         convert('I', uppercase=True)
     with pytest.raises(ValueError):
@@ -30,11 +30,11 @@ def test_integer_format_uppercase():
 
 def test_binary_format():
     for w in range(1, 81):
-        assert convert(f'B{w}') == f'{w}b'
+        assert convert('B{}'.format(w)) == '{}b'.format(w)
     for d in range(1, 20):
-        assert convert(f'B20.{d}') == f'20b'
+        assert convert('B20.{}'.format(d)) == '20b'
     for d in range(20, 41):
-        assert convert(f'B20.{d}') == f'020b'
+        assert convert('B20.{}'.format(d)) == '020b'
     with pytest.raises(ValueError):
         convert('B')
     with pytest.raises(ValueError):
@@ -43,11 +43,11 @@ def test_binary_format():
 
 def test_binary_format_uppercase():
     for w in range(1, 81):
-        assert convert(f'B{w}', uppercase=True) == f'{w}b'
+        assert convert('B{}'.format(w), uppercase=True) == '{}b'.format(w)
     for d in range(1, 20):
-        assert convert(f'B20.{d}', uppercase=True) == f'20b'
+        assert convert('B20.{}'.format(d), uppercase=True) == '20b'
     for d in range(20, 41):
-        assert convert(f'B20.{d}', uppercase=True) == f'020b'
+        assert convert('B20.{}'.format(d), uppercase=True) == '020b'
     with pytest.raises(ValueError):
         convert('B', uppercase=True)
     with pytest.raises(ValueError):
@@ -56,11 +56,11 @@ def test_binary_format_uppercase():
 
 def test_octal_format():
     for w in range(1, 81):
-        assert convert(f'O{w}') == f'{w}o'
+        assert convert('O{}'.format(w)) == '{}o'.format(w)
     for d in range(1, 20):
-        assert convert(f'O20.{d}') == f'20o'
+        assert convert('O20.{}'.format(d)) == '20o'
     for d in range(20, 41):
-        assert convert(f'O20.{d}') == f'020o'
+        assert convert('O20.{}'.format(d)) == '020o'
     with pytest.raises(ValueError):
         convert('O')
     with pytest.raises(ValueError):
@@ -69,11 +69,11 @@ def test_octal_format():
 
 def test_octal_format_uppercase():
     for w in range(1, 81):
-        assert convert(f'O{w}', uppercase=True) == f'{w}o'
+        assert convert('O{}'.format(w), uppercase=True) == '{}o'.format(w)
     for d in range(1, 20):
-        assert convert(f'O20.{d}', uppercase=True) == f'20o'
+        assert convert('O20.{}'.format(d), uppercase=True) == '20o'
     for d in range(20, 41):
-        assert convert(f'O20.{d}', uppercase=True) == f'020o'
+        assert convert('O20.{}'.format(d), uppercase=True) == '020o'
     with pytest.raises(ValueError):
         convert('O', uppercase=True)
     with pytest.raises(ValueError):
@@ -82,11 +82,11 @@ def test_octal_format_uppercase():
 
 def test_hexadecimal_format():
     for w in range(1, 81):
-        assert convert(f'Z{w}') == f'{w}x'
+        assert convert('Z{}'.format(w)) == '{}x'.format(w)
     for d in range(1, 20):
-        assert convert(f'Z20.{d}') == f'20x'
+        assert convert('Z20.{}'.format(d)) == '20x'
     for d in range(20, 41):
-        assert convert(f'Z20.{d}') == f'020x'
+        assert convert('Z20.{}'.format(d)) == '020x'
     with pytest.raises(ValueError):
         convert('Z')
     with pytest.raises(ValueError):
@@ -95,11 +95,11 @@ def test_hexadecimal_format():
 
 def test_hexadecimal_format_uppercase():
     for w in range(1, 81):
-        assert convert(f'Z{w}', uppercase=True) == f'{w}X'
+        assert convert('Z{}'.format(w), uppercase=True) == '{}X'.format(w)
     for d in range(1, 20):
-        assert convert(f'Z20.{d}', uppercase=True) == f'20X'
+        assert convert('Z20.{}'.format(d), uppercase=True) == '20X'
     for d in range(20, 41):
-        assert convert(f'Z20.{d}', uppercase=True) == f'020X'
+        assert convert('Z20.{}'.format(d), uppercase=True) == '020X'
     with pytest.raises(ValueError):
         convert('Z', uppercase=True)
     with pytest.raises(ValueError):
@@ -109,7 +109,7 @@ def test_hexadecimal_format_uppercase():
 def test_real_format():
     for d in range(0, 81):
         for w in range(d+1, 81):
-            assert convert(f'F{w}.{d}') == f'{w}.{d}f'
+            assert convert('F{}.{}'.format(w, d)) == '{}.{}f'.format(w, d)
     with pytest.raises(ValueError):
         convert('F')
     with pytest.raises(ValueError):
@@ -121,7 +121,8 @@ def test_real_format():
 def test_real_format_uppercase():
     for d in range(0, 81):
         for w in range(d+1, 81):
-            assert convert(f'F{w}.{d}', uppercase=True) == f'{w}.{d}F'
+            assert (convert('F{}.{}'.format(w, d), uppercase=True)
+                    == '{}.{}F'.format(w, d))
     with pytest.raises(ValueError):
         convert('F', uppercase=True)
     with pytest.raises(ValueError):
@@ -133,7 +134,7 @@ def test_real_format_uppercase():
 def test_double_format():
     for d in range(0, 81):
         for w in range(d+1, 81):
-            assert convert(f'D{w}.{d}') == f'{w}.{d}f'
+            assert convert('D{}.{}'.format(w, d)) == '{}.{}f'.format(w, d)
     with pytest.raises(ValueError):
         convert('D')
     with pytest.raises(ValueError):
@@ -145,7 +146,8 @@ def test_double_format():
 def test_double_format_uppercase():
     for d in range(0, 81):
         for w in range(d+1, 81):
-            assert convert(f'D{w}.{d}', uppercase=True) == f'{w}.{d}F'
+            assert (convert('D{}.{}'.format(w, d), uppercase=True) ==
+                    '{}.{}F'.format(w, d))
     with pytest.raises(ValueError):
         convert('D', uppercase=True)
     with pytest.raises(ValueError):
@@ -157,15 +159,17 @@ def test_double_format_uppercase():
 def test_exponent_format():
     for d in range(0, 21):
         for w in range(d+1, 21):
-            assert convert(f'E{w}.{d}') == f'{w}.{d}e'
+            assert convert('E{}.{}'.format(w, d)) == '{}.{}e'.format(w, d)
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'E{w}.{d}E{e}') == f'{w}.{d}e'
+                assert (convert('E{}.{}E{}'.format(w, d, e)) ==
+                        '{}.{}e'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'E{w}.{d}D{e}') == f'{w}.{d}e'
+                assert convert('E{}.{}D{}'.format(w, d, e)) ==\
+                       '{}.{}e'.format(w, d)
     with pytest.raises(ValueError):
         convert('E')
     with pytest.raises(ValueError):
@@ -177,15 +181,18 @@ def test_exponent_format():
 def test_exponent_format_uppercase():
     for d in range(0, 21):
         for w in range(d+1, 21):
-            assert convert(f'E{w}.{d}', uppercase=True) == f'{w}.{d}E'
+            assert (convert('E{}.{}'.format(w, d), uppercase=True) ==
+                    '{}.{}E'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'E{w}.{d}E{e}', uppercase=True) == f'{w}.{d}E'
+                assert (convert('E{}.{}E{}'.format(w, d, e), uppercase=True) ==
+                        '{}.{}E'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'E{w}.{d}D{e}', uppercase=True) == f'{w}.{d}E'
+                assert (convert('E{}.{}D{}'.format(w, d, e), uppercase=True) ==
+                        '{}.{}E'.format(w, d))
     with pytest.raises(ValueError):
         convert('E', uppercase=True)
     with pytest.raises(ValueError):
@@ -197,15 +204,17 @@ def test_exponent_format_uppercase():
 def test_engineering_format():
     for d in range(0, 21):
         for w in range(d+1, 21):
-            assert convert(f'EN{w}.{d}') == f'{w}.{d}e'
+            assert convert('EN{}.{}'.format(w, d)) == '{}.{}e'.format(w, d)
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'EN{w}.{d}E{e}') == f'{w}.{d}e'
+                assert (convert('EN{}.{}E{}'.format(w, d, e)) ==
+                        '{}.{}e'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'EN{w}.{d}D{e}') == f'{w}.{d}e'
+                assert (convert('EN{}.{}D{}'.format(w, d, e)) ==
+                        '{}.{}e'.format(w, d))
     with pytest.raises(ValueError):
         convert('EN')
     with pytest.raises(ValueError):
@@ -217,15 +226,18 @@ def test_engineering_format():
 def test_engineering_format_uppercase():
     for d in range(0, 21):
         for w in range(d+1, 21):
-            assert convert(f'EN{w}.{d}', uppercase=True) == f'{w}.{d}E'
+            assert (convert('EN{}.{}'.format(w, d), uppercase=True) ==
+                    '{}.{}E'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'EN{w}.{d}E{e}', uppercase=True) == f'{w}.{d}E'
+                assert (convert('EN{}.{}E{}'.format(w, d, e), uppercase=True)
+                        == '{}.{}E'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'EN{w}.{d}D{e}', uppercase=True) == f'{w}.{d}E'
+                assert (convert('EN{}.{}D{}'.format(w, d, e), uppercase=True)
+                        == '{}.{}E'.format(w, d))
     with pytest.raises(ValueError):
         convert('EN', uppercase=True)
     with pytest.raises(ValueError):
@@ -237,15 +249,17 @@ def test_engineering_format_uppercase():
 def test_scientific_format():
     for d in range(0, 21):
         for w in range(d+1, 21):
-            assert convert(f'ES{w}.{d}') == f'{w}.{d}e'
+            assert convert('ES{}.{}'.format(w, d)) == '{}.{}e'.format(w, d)
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'ES{w}.{d}E{e}') == f'{w}.{d}e'
+                assert (convert('ES{}.{}E{}'.format(w, d, e)) ==
+                        '{}.{}e'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'ES{w}.{d}D{e}') == f'{w}.{d}e'
+                assert (convert('ES{}.{}D{}'.format(w, d, e)) ==
+                        '{}.{}e'.format(w, d))
     with pytest.raises(ValueError):
         convert('ES')
     with pytest.raises(ValueError):
@@ -257,15 +271,18 @@ def test_scientific_format():
 def test_scientific_format_uppercase():
     for d in range(0, 21):
         for w in range(d+1, 21):
-            assert convert(f'ES{w}.{d}', uppercase=True) == f'{w}.{d}E'
+            assert (convert('ES{}.{}'.format(w, d), uppercase=True) ==
+                    '{}.{}E'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'ES{w}.{d}E{e}', uppercase=True) == f'{w}.{d}E'
+                assert (convert('ES{}.{}E{}'.format(w, d, e), uppercase=True)
+                        == '{}.{}E'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'ES{w}.{d}D{e}', uppercase=True) == f'{w}.{d}E'
+                assert (convert('ES{}.{}D{}'.format(w, d, e), uppercase=True)
+                        == '{}.{}E'.format(w, d))
     with pytest.raises(ValueError):
         convert('ES', uppercase=True)
     with pytest.raises(ValueError):
@@ -276,7 +293,7 @@ def test_scientific_format_uppercase():
 
 def test_logical_format():
     for w in range(0, 81):
-        assert convert(f'L{w}') == f'{w}'
+        assert convert('L{}'.format(w)) == '{}'.format(w)
     with pytest.raises(ValueError):
         convert('L')
     with pytest.raises(ValueError):
@@ -287,19 +304,19 @@ def test_logical_format():
 
 def test_logical_format_uppercase():
     for w in range(0, 81):
-        assert convert(f'L{w}') == f'{w}'
+        assert convert('L{}'.format(w), uppercase=True) == '{}'.format(w)
     with pytest.raises(ValueError):
-        convert('L')
+        convert('L', uppercase=True)
     with pytest.raises(ValueError):
-        convert('L4.2')
+        convert('L4.2', uppercase=True)
     with pytest.raises(ValueError):
-        convert('L4.2E3')
+        convert('L4.2E3', uppercase=True)
 
 
 def test_string_format():
-    assert convert('A') == f's'
+    assert convert('A') == 's'
     for w in range(0, 81):
-        assert convert(f'A{w}') == f'{w}s'
+        assert convert('A{}'.format(w)) == '{}s'.format(w)
     with pytest.raises(ValueError):
         convert('A4.2')
     with pytest.raises(ValueError):
@@ -307,9 +324,9 @@ def test_string_format():
 
 
 def test_string_format_uppercase():
-    assert convert('A', uppercase=True) == f's'
+    assert convert('A', uppercase=True) == 's'
     for w in range(0, 81):
-        assert convert(f'A{w}', uppercase=True) == f'{w}s'
+        assert convert('A{}'.format(w), uppercase=True) == '{}s'.format(w)
     with pytest.raises(ValueError):
         convert('A4.2', uppercase=True)
     with pytest.raises(ValueError):
@@ -319,15 +336,17 @@ def test_string_format_uppercase():
 def test_general_format():
     for d in range(0, 21):
         for w in range(d+1, 21):
-            assert convert(f'G{w}.{d}') == f'{w}.{d}g'
+            assert convert('G{}.{}'.format(w, d)) == '{}.{}g'.format(w, d)
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'G{w}.{d}E{e}') == f'{w}.{d}g'
+                assert (convert('G{}.{}E{}'.format(w, d, e)) ==
+                        '{}.{}g'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'G{w}.{d}D{e}') == f'{w}.{d}g'
+                assert (convert('G{}.{}D{}'.format(w, d, e)) ==
+                        '{}.{}g'.format(w, d))
     with pytest.raises(ValueError):
         convert('G')
     with pytest.raises(ValueError):
@@ -339,15 +358,18 @@ def test_general_format():
 def test_general_format_uppercase():
     for d in range(0, 21):
         for w in range(d+1, 21):
-            assert convert(f'G{w}.{d}', uppercase=True) == f'{w}.{d}G'
+            assert (convert('G{}.{}'.format(w, d), uppercase=True) ==
+                    '{}.{}G'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'G{w}.{d}E{e}', uppercase=True) == f'{w}.{d}G'
+                assert (convert('G{}.{}E{}'.format(w, d, e), uppercase=True) ==
+                        '{}.{}G'.format(w, d))
     for d in range(0, 21):
         for w in range(d+1, 21):
             for e in range(1, 21):
-                assert convert(f'G{w}.{d}D{e}', uppercase=True) == f'{w}.{d}G'
+                assert (convert('G{}.{}D{}'.format(w, d, e), uppercase=True) ==
+                        '{}.{}G'.format(w, d))
     with pytest.raises(ValueError):
         convert('G', uppercase=True)
     with pytest.raises(ValueError):

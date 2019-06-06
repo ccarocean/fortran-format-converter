@@ -5,6 +5,7 @@ from typing import Tuple, Optional
 import regex as re  # type: ignore
 from cached_property import cached_property  # type: ignore
 
+__all__ = ['Format', 'convert']
 
 _MATCH_FORMAT = re.compile(
     r'(?|'
@@ -65,8 +66,8 @@ class Format:
 
     def _format_error(self) -> Exception:
         return ValueError(
-            f"'{self._fortran_format}' is not a valid "
-            "Fortran format specifier")
+            "'{}' is not a valid Fortran format specifier".format(
+                self._fortran_format))
 
     def _fortran_parts(self) -> \
             Tuple[str, Optional[int], Optional[int], Optional[int]]:
@@ -86,8 +87,10 @@ class Format:
         align = self.align if self.align != '>' else ''
         sign = self.sign if self.sign != '-' else ''
         width = self.width if self.width is not None else ''
-        precision = f'.{self.precision}' if self.precision is not None else ''
-        return f'{self.fill}{align}{sign}{width}{precision}{self.type}'
+        precision = '.{}'.format(self.precision) \
+            if self.precision is not None else ''
+        return '{}{}{}{}{}{}'.format(
+            self.fill, align, sign, width, precision, self.type)
 
     @cached_property
     def sign(self) -> str:
@@ -169,5 +172,5 @@ def convert(fortran_format: str, uppercase: bool = False) -> str:
         A Python format string that is a best effort approximation of the
         given :paramref:`fortran_format` string.
     """
-    format_string: str = Format(fortran_format, uppercase).string
+    format_string = Format(fortran_format, uppercase).string  # type: str
     return format_string
