@@ -1,8 +1,6 @@
 fortran-format-converter
 ========================
 
-WORK IN PROGRESS - This will be removed upon first release.
-
 Convert Fortran format specifiers to Python format strings.
 
 |build-status|
@@ -18,26 +16,28 @@ Convert Fortran format specifiers to Python format strings.
 Requirements
 ------------
 
-* Python 3.4 or greater
+* Python 3.5 or greater
+* regex_
+* cached-property_
 
 
 
 Installation
 ------------
 
-`fortran-format` is on PyPI_ so the easiest way to install it is:
+`fortran-format-converter` is on PyPI_ so the easiest way to install it is:
 
 .. code-block:: text
 
-    $ pip install fortran-format
+    $ pip install fortran-format-converter
 
 
 
 Usage
 -----
 
-Currently `fortran-format` only handles simple conversions and in a single
-direction, Fortan -> Python.
+Currently `fortran-format-converter` only handles simple conversions and in a
+single direction, Fortan -> Python.
 
 
 We begin by importing the converter.
@@ -52,27 +52,28 @@ formatting specification.
 
 .. code-block:: python
 
-    >>> ffc.Format('F6.2').string
+    >>> ffc.convert('F6.2')
     '6.2f'
 
 Most types of Fortran format specifications are supported, such as binary.
 
 .. code-block:: python
 
-    >>> ffc.Format('B16.16').string
+    >>> ffc.convert('B16.16')
     '016b'
 
 If an invalid format string is given an error will be raised.
 
 .. code-block:: python
 
-    >>> ffc.Format('J4')
+    >>> ffc.convert('J4')
     Traceback (most recent call last):
     ...
     ValueError: 'J4' is not a valid Fortran format specifier
 
 Sometimes it may be desirable to parameterized the format.  This can be
-accomplished with the `width`, `align`, and `precision` fields.
+accomplished with the `width`, `align`, and `precision` fields of the
+`Format` class.
 
 .. code-block:: python
 
@@ -90,13 +91,15 @@ accomplished with the `width`, `align`, and `precision` fields.
     excellent fortranformat_ package by *Brendan Arnold* which reads or writes
     directly without translation through Python format strings.
     `fortran-format-converter` is intended for applications where a Python
-    compatible format string (and not the result) is required, such as
+    compatible format string (and not the result) is required, such as for
     matplotlib_ tick formatting.
 
 
 .. _PyPI: https://pypi.org/
 .. _fortranformat: https://bitbucket.org/brendanarnold/py-fortranformat/src
 .. _matplotlib: https://matplotlib.org/
+.. _regex: https://bitbucket.org/mrabarnett/mrab-regex
+.. _cached-property: https://github.com/pydanny/cached-property
 
 .. |build-status| image:: https://travis-ci.com/ccarocean/fortran-format-converter.svg?branch=master&style=flat
    :target: https://travis-ci.com/ccarocean/fortran-format-converter

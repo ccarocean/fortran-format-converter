@@ -32,10 +32,9 @@ setup(
     setup_requires=['pytest-runner'],
     tests_require=[
         'pytest',
-        'pytest-mock'
     ],
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
