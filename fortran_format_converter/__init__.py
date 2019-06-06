@@ -2,6 +2,6 @@
 
 from ._converter import Format, convert
 
-__version__ = '0.0.1rc'
+__version__ = '0.1.0'
 
 __all__ = ['Format', 'convert']
