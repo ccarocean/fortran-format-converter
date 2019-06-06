@@ -16,8 +16,8 @@ def read(filename):
 
 
 setup(
-    name='fortran-format-converter-converter',
-    version=read_version('fortran-format-converter-converter/__init__.py'),
+    name='fortran-format-converter',
+    version=read_version('fortran_format_converter/__init__.py'),
     author='Michael R. Shannon',
     author_email='mrshannon.aerospace@gmail.com',
     description='Convert Fortran format specifiers to Python format strings.',
