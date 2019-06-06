@@ -16,6 +16,7 @@ pylint
 pycodestyle
 pydocstyle>=2.1.0
 pyflakes>=2.1.0
+tox>=3.7.0
 
 # building
 wheel
