@@ -5,6 +5,8 @@ Changelog
 Unreleased_
 -----------
 
+* Add dependencies to setup.py.
+
 
 v0.1.1_ - 2019-06-06
 --------------------

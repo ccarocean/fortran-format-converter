@@ -29,6 +29,10 @@ setup(
     package_data={
         'fortran-format-converter': ['py.typed']
     },
+    install_requires=[
+        'cached_property',
+        'regex'
+    ],
     setup_requires=['pytest-runner'],
     tests_require=[
         'pytest',
