@@ -58,7 +58,7 @@ class Format:
 
     """
 
-    def __init__(self, fortran_format: str, uppercase: bool = False):
+    def __init__(self, fortran_format: str, uppercase: bool = False) -> None:
         self._uppercase = uppercase
         self._fortran_format = fortran_format
         self._type, self._width, self._digits, self._exponent = (
