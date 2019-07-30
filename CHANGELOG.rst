@@ -5,6 +5,7 @@ Changelog
 Unreleased_
 -----------
 
+* Add missing py.typed to built package, allowing types to be exported.
 
 
 v0.1.2_ - 2019-06-11

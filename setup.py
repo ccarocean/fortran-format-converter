@@ -27,7 +27,7 @@ setup(
     url='https://github.com/ccarocean/fortran-format-converter',
     packages=find_packages(),
     package_data={
-        'fortran-format-converter': ['py.typed']
+        'fortran_format_converter': ['py.typed']
     },
     install_requires=[
         'cached_property',
