@@ -5,6 +5,10 @@ Changelog
 Unreleased_
 -----------
 
+
+v0.1.3_ - 2019-08-07
+--------------------
+
 * Add missing py.typed to built package, allowing types to be exported.
 
 
@@ -30,5 +34,6 @@ v0.1.0 - 2019-06-06
   strings into Python format strings.
 
 .. _Unreleased: https://github.com/ccarocean/fortran-format-converter/compare/v0.1.2...HEAD
+.. _v0.1.3: https://github.com/ccarocean/fortran-format-converter/compare/v0.1.2...v0.1.3
 .. _v0.1.2: https://github.com/ccarocean/fortran-format-converter/compare/v0.1.1...v0.1.2
 .. _v0.1.1: https://github.com/ccarocean/fortran-format-converter/compare/v0.1.0...v0.1.1
